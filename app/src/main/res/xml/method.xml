@@ -1170,6 +1170,16 @@
         android:imeSubtypeExtraValue="KeyboardLayoutSet=MAIN:uzbek,AsciiCapable,EmojiCapable"
         android:isAsciiCapable="true"
     />
+    <!-- New Uzbek Latin alphabet (2026). Separate locale variant, so it has its own dictionary and popup keys. -->
+    <subtype android:icon="@drawable/ic_ime_switcher"
+        android:label="@string/subtype_generic"
+        android:subtypeId="0x5e0a1b3c"
+        android:imeSubtypeLocale="uz_UZ_newlat"
+        android:languageTag="uz-UZ-newlat"
+        android:imeSubtypeMode="keyboard"
+        android:imeSubtypeExtraValue="KeyboardLayoutSet=MAIN:uzbek_new,AsciiCapable,EmojiCapable"
+        android:isAsciiCapable="true"
+    />
     <subtype android:icon="@drawable/ic_ime_switcher"
         android:label="@string/subtype_generic"
         android:subtypeId="0x93972eee"

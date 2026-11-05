@@ -70,7 +70,10 @@
     <!-- Description for Hebrew 2 subtype. -->
     <string name="subtype_hebrew_1452_2" translatable="false">%s (1452-2)</string>
 
-    <string name="english_ime_name" translatable="false">Yangi o\'zbek klaviaturasi</string>
+    <!-- Language name for the new Uzbek Latin alphabet subtype (uz-UZ-newlat) -->
+    <string name="subtype_uz_newlat" translatable="false">O\'zbek (yangi alifbo)</string>
+
+    <string name="english_ime_name"translatable="false">Yangi o\'zbek klaviaturasi</string>
     <!-- App slogan-->
     <string name="app_slogan" translatable="false">Based on HeliBoard (GPL v3), OpenBoard and AOSP.</string>
 
