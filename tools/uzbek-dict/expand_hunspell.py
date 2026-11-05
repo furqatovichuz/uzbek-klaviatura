@@ -12,7 +12,8 @@ import sys
 from collections import defaultdict
 
 def load_rules(aff_path):
-    rules = defaultdict(list)  # flag -> [(strip, add, cont_flags, cond_regex)]
+    """flag -> {condition: [(strip, add, cont_flags)]}"""
+    rules = defaultdict(lambda: defaultdict(list))
     for line in open(aff_path, encoding="utf-8"):
         p = line.split()
         if len(p) < 5 or p[0] != "SFX":
@@ -23,17 +24,18 @@ def load_rules(aff_path):
             add, cont = add.split("/", 1)
         strip = "" if strip == "0" else strip
         add = "" if add == "0" else add
-        rules[flag].append((strip, add, cont, re.compile("(?:" + cond + ")$")))
+        rules[flag][re.compile("(?:" + cond + ")$")].append((strip, add, cont))
     return rules
 
 def apply(word, flags, rules):
     for f in flags:
-        for strip, add, cont, cond in rules.get(f, ()):
+        for cond, items in rules.get(f, {}).items():
             if not cond.search(word):
                 continue
-            if strip and not word.endswith(strip):
-                continue
-            yield (word[: len(word) - len(strip)] + add), cont
+            for strip, add, cont in items:
+                if strip and not word.endswith(strip):
+                    continue
+                yield (word[: len(word) - len(strip)] + add), cont
 
 def main():
     dic, aff, out = sys.argv[1:4]
