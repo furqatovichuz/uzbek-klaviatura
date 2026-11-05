@@ -81,13 +81,7 @@ fun MainSettingsScreen(
                         onClick = onClickGestureTyping,
                         icon = R.drawable.ic_settings_gesture
                     ) { NextScreenIcon() }
-                // we don't even show the menu if data gathering phase ended more than 2 weeks ago
-                if (JniUtils.sHaveGestureLib && System.currentTimeMillis() < END_DATE_EPOCH_MILLIS + TWO_WEEKS_IN_MILLIS)
-                    Preference(
-                        name = stringResource(R.string.gesture_data_screen),
-                        onClick = onClickDataGathering,
-                        icon = R.drawable.ic_settings_gesture
-                    ) { NextScreenIcon() }
+                // gesture data gathering is disabled in this fork: no entry, no data leaves the device
                 Preference(
                     name = stringResource(R.string.settings_screen_correction),
                     onClick = onClickTextCorrection,

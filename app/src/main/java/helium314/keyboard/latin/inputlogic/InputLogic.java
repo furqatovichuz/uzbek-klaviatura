@@ -70,6 +70,7 @@ import helium314.keyboard.latin.utils.BackgroundGatheringCache;
 import helium314.keyboard.latin.utils.RecapitalizeMode;
 import helium314.keyboard.latin.utils.RecapitalizeStatus;
 import helium314.keyboard.latin.utils.ScriptUtils;
+import helium314.keyboard.latin.utils.UzbekAlphabetConverter;
 import helium314.keyboard.latin.utils.StatsUtils;
 import helium314.keyboard.latin.utils.TextAtCursor;
 import helium314.keyboard.latin.utils.TextPlacement;
@@ -694,6 +695,24 @@ public final class InputLogic {
      * @param event The event to handle.
      * @param inputTransaction The transaction in progress.
      */
+    /** Converts selected text (or the whole field) to the alphabet of the active Uzbek layout. */
+    private void convertUzbekAlphabet(final SettingsValues sv, final InputTransaction inputTransaction) {
+        if (sv.mInputAttributes.mIsPasswordField) return;
+        if (!"uz".equals(sv.mLocale.getLanguage())) {
+            KeyboardSwitcher.getInstance().showToast(mLatinIME.getString(helium314.keyboard.latin.R.string.uzbek_convert_not_uzbek), true);
+            return;
+        }
+        final boolean toNew = "newlat".equals(sv.mLocale.getVariant());
+        final int result = mConnection.convertSelectionOrAllText(
+                text -> toNew ? UzbekAlphabetConverter.INSTANCE.oldToNew(text) : UzbekAlphabetConverter.INSTANCE.newToOld(text),
+                10_000);
+        if (result == RichInputConnection.CONVERT_DONE) {
+            inputTransaction.setDidAffectContents();
+        } else if (result == RichInputConnection.CONVERT_TOO_LONG) {
+            KeyboardSwitcher.getInstance().showToast(mLatinIME.getString(helium314.keyboard.latin.R.string.uzbek_convert_too_long), true);
+        }
+    }
+
     private void handleFunctionalEvent(Event event, InputTransaction inputTransaction, LatinIME.UIHandler handler) {
         int keyCode = event.getKeyCode();
         SettingsValues sv = inputTransaction.getSettingsValues();
@@ -772,6 +791,9 @@ public final class InputLogic {
                 break;
             case KeyCode.CLIPBOARD_SELECT_ALL:
                 mConnection.selectAll();
+                break;
+            case KeyCode.UZBEK_CONVERT:
+                convertUzbekAlphabet(sv, inputTransaction);
                 break;
             case KeyCode.CLIPBOARD_SELECT_WORD:
                 mConnection.selectWord(sv.mSpacingAndPunctuations);

@@ -793,6 +793,51 @@ public final class RichInputConnection implements PrivateCommandPerformer {
         return reloadTextCache();
     }
 
+    public static final int CONVERT_DONE = 0;
+    public static final int CONVERT_NOTHING_TO_DO = 1;
+    public static final int CONVERT_TOO_LONG = 2;
+    public static final int CONVERT_FAILED = 3;
+
+    /**
+     * Replaces the selected text, or the whole field text if nothing is selected, with the result of [convert].
+     * Done in a single batch edit, so the editor sees one change. Selection is kept on the converted text,
+     * or the cursor stays at the corresponding position when nothing was selected.
+     */
+    public int convertSelectionOrAllText(final kotlin.jvm.functions.Function1<String, String> convert, final int maxLength) {
+        if (!isConnected() || !isCursorPositionKnown()) return CONVERT_FAILED;
+        finishComposingText();
+        final int selStart = mExpectedSelStart;
+        final int selEnd = mExpectedSelEnd;
+        beginBatchEdit();
+        try {
+            if (selStart != selEnd) {
+                final CharSequence selected = getSelectedText(0);
+                if (selected == null) return CONVERT_FAILED;
+                if (selected.length() > maxLength) return CONVERT_TOO_LONG;
+                final String converted = convert.invoke(selected.toString());
+                if (converted.contentEquals(selected)) return CONVERT_NOTHING_TO_DO;
+                mIC.commitText(converted, 1);
+                setSelection(selStart, selStart + converted.length());
+                return CONVERT_DONE;
+            }
+            final CharSequence before = getTextBeforeCursor(maxLength + 1, 0);
+            final CharSequence after = getTextAfterCursor(maxLength + 1, 0);
+            if (before == null || after == null) return CONVERT_FAILED;
+            if (before.length() + after.length() > maxLength) return CONVERT_TOO_LONG;
+            final String original = before.toString() + after;
+            final String converted = convert.invoke(original);
+            if (converted.equals(original)) return CONVERT_NOTHING_TO_DO;
+            final int start = selStart - before.length();
+            final int cursor = Math.min(convert.invoke(before.toString()).length(), converted.length());
+            mIC.setSelection(start, start + original.length());
+            mIC.commitText(converted, 1);
+            setSelection(start + cursor, start + cursor);
+            return CONVERT_DONE;
+        } finally {
+            endBatchEdit();
+        }
+    }
+
     public void selectAll() {
         if (!isConnected()) return;
         if (mExpectedSelStart != mExpectedSelEnd && mExpectedSelStart == 0 && !hasTextAfterCursor()) { // all text already selected
