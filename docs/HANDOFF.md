@@ -14,16 +14,17 @@ Branch: `uzbek-klaviatura`. Topshiriq: [TZ-uzbek-klaviatura.md](TZ-uzbek-klaviat
 ## Tekshirilmagan (keyingi kompda birinchi navbatda)
 - Emulyator/qurilmada: layout (360dp da 3-qator), Shift `ş→Ş`, `I` hech qachon `İ` emas, til sozlamalarida ikkita o'zbek variant, toolbar tugmasi (tanlangan matn / butun maydon / undo), parol maydoni.
 - Lug'atlar ilovada yuklanishi va so'z takliflari (`uz-UZ` va `uz-UZ-newlat` aralashmasligi), spellchecker va til nomi ko'rinishi.
-- Butun `./gradlew testDebugUnitTest` (faqat konvertor testi ishga tushirilgan; to'liq run tugamadi).
-- `INTERNET` ruxsati yo'qligini birlashgan manifestda tekshirish.
+- Test natijasi (JDK 21 bilan, 199 test, 19 xato): 14 tasi fork'dan oldingi upstream commitda (`2d9869b2`, faqat `InputTest.kt` kompilyatsiya tuzatishi bilan) ham xuddi shunday yiqiladi (`ParserTest`, `InputTest`, `CharacterIteratorTest`, `StringUtilsTest`, `InputLogicTest`). 3 ta `XLinkTest` ham upstream'da yiqiladi (tarmoq/havolalar). Yana 2 ta (`layoutsLinksInternal`, `otherLinks`) `Links.GITHUB` bizning private repoga 404 bergani uchun yiqiladi; repo public bo'lgach o'tishi kerak (`layoutsLinksInternal` `blob/main/` ishlatadi, bizning asosiy branch `uzbek-klaviatura` — keyin ko'rib chiqish kerak).
 
 ## Qilinishi kerak
-- Ikonka (hozir HeliBoard ikonkasi), About va `Links.GITHUB` (`latin/common/Constants.kt`) ni shu repoga yo'naltirish; About'da HeliBoard/OpenBoard/AOSP attributsiyasi (`app_slogan` da bor).
+- Ikonka (hozir HeliBoard ikonkasi). About: `Links.GITHUB`/`LICENSE` endi `furqatovichuz/uzbek-klaviatura`; wiki/discussions/community havolalari upstream'da qoldi (`Links.UPSTREAM_GITHUB`). Attributsiya `app_slogan` da bor.
 - Lug'at sifati: affiks kengaytirish (`tools/uzbek-dict/expand_hunspell.py --depth 1+` juda sekin va xotirani ko'p oladi, optimallashtirish kerak) va haqiqiy chastotalar.
 - Release imzolash (keystore repoga kirmaydi), Play Console maxfiylik siyosati.
 - Repo ochiq (public) bo'lishi kerak: GPL v3 manba kodini foydalanuvchilarga ochishni talab qiladi (hozir private).
 
 ## Build
+Windows (shu kompda tekshirilgan): wrapper'ning Gradle 9.7.1 yuklanmaydi (JDK sertifikat zanjirini tanimaydi) va Robolectric uchun JDK 21 kerak. Ishlagan variant: keshdagi Gradle 9.4.1, `JAVA_HOME=~/.jdks/jdk-21.0.12.1+1`, `JAVA_TOOL_OPTIONS=-Djavax.net.ssl.trustStoreType=Windows-ROOT`, `ANDROID_HOME=%LOCALAPPDATA%\Android\Sdk`. `assembleDebug` muvaffaqiyatli (APK: `app/build/outputs/apk/debug/YangiOzbekKlaviaturasi_1.0.0-debug.apk`); birlashgan debug manifestda `INTERNET` yo'q.
+
 ```bash
 export ANDROID_HOME=$HOME/Library/Android/sdk   # NDK 28.0.13004108 avtomatik o'rnatiladi (~1 GB)
 ./gradlew assembleDebug
