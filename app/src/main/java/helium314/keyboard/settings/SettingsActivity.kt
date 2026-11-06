@@ -2,6 +2,7 @@
 package helium314.keyboard.settings
 
 import android.content.Context
+import helium314.keyboard.latin.utils.UiLocale
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
@@ -71,6 +72,10 @@ open class SettingsActivity : ComponentActivity(), SharedPreferences.OnSharedPre
     private val cachedDictionaryFile by lazy { File(this.cacheDir.path + File.separator + "temp_dict") }
     private val crashReportFiles = MutableStateFlow<List<File>>(emptyList())
     private var paused = true
+
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(UiLocale.wrap(newBase))
+    }
 
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {

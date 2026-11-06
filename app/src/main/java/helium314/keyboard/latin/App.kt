@@ -13,6 +13,7 @@ import helium314.keyboard.latin.utils.FoldableUtils
 import helium314.keyboard.latin.utils.LayoutUtilsCustom
 import helium314.keyboard.latin.utils.Log
 import helium314.keyboard.latin.utils.SubtypeSettings
+import helium314.keyboard.latin.utils.UiLocale
 import helium314.keyboard.latin.utils.prefs
 import helium314.keyboard.latin.utils.upgradeToolbarPrefs
 import kotlinx.coroutines.CoroutineScope
@@ -24,6 +25,7 @@ import kotlinx.coroutines.runBlocking
 class App : Application() {
     override fun onCreate() {
         super.onCreate()
+        UiLocale.applyTo(this)
         app = this
         val ctx: Context = this
         DebugFlags.init(this) // needed by several other inits, so do it first

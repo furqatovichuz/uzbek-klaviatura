@@ -7,6 +7,7 @@
 package helium314.keyboard.latin.spellcheck;
 
 import android.content.Intent;
+import helium314.keyboard.latin.utils.UiLocale;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.service.textservice.SpellCheckerService;
@@ -80,6 +81,7 @@ public final class AndroidSpellCheckerService extends SpellCheckerService
     @Override
     public void onCreate() {
         super.onCreate();
+        UiLocale.applyTo(this);
         mRecommendedThreshold = Float.parseFloat(getString(R.string.spellchecker_recommended_threshold_value));
         final SharedPreferences prefs = KtxKt.prefs(this);
         prefs.registerOnSharedPreferenceChangeListener(this);

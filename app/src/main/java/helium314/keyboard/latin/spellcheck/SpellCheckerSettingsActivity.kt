@@ -2,11 +2,17 @@
 package helium314.keyboard.latin.spellcheck
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import helium314.keyboard.latin.utils.UiLocale
 import android.os.Bundle
 import helium314.keyboard.settings.SettingsActivity2
 
 class SpellCheckerSettingsActivity : Activity() {
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(UiLocale.wrap(newBase))
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val intent = Intent()

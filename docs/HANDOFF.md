@@ -11,6 +11,11 @@ Branch: `uzbek-klaviatura`. Topshiriq: [TZ-uzbek-klaviatura.md](TZ-uzbek-klaviat
 6. **Gesture data o'chirildi** — Sozlamalardagi bo'lim va eslatma dialogi olib tashlandi, `gesture_data_mail` bo'sh. Ichki kod saqlangan (upstream merge oson bo'lishi uchun).
 7. **Lug'atlar** — `assets/dicts/main_uz-UZ.dict`, `main_uz-UZ-newlat.dict` (87 412 so'z, chastota tekis). Manba: uzbek-net/uz-hunspell (GPL-3.0), kelib chiqishi manba repoda yozilmagan. Yasash: `tools/uzbek-dict/README.md`.
 
+8. **Interfeys tili** — ilova interfeysi tizim tilidan qat'i nazar har doim o'zbekcha (yangi alifbo): `latin/utils/UiLocale.kt` (Activity'larda `attachBaseContext`, Service/Application'da `updateConfiguration`). Tarjima `tools/uzbek-ui/tr_part*.py` (eski alifboda yoziladi) -> `python tools/uzbek-ui/build_strings.py` -> `res/values-uz/strings*.xml` (qo'lda tahrirlamang). Gesture bo'limi matnlari tarjimasiz (bo'lim olib tashlangan).
+9. **Standart til** — `SubtypeSettings.getDefaultEnabledSubtypes()` har doim `uz-UZ-newlat`.
+10. **Ranglar** — Material You (fon rasmidan) ranglari o'chirildi: `latin/utils/Theme.kt` (brend ko'k, kun/tun tizim bo'yicha), `values-v31/colors.xml`, `values-night-v31/colors.xml`. Logo: `assets/images/logo.png` -> launcher ikonkalari, `drawable-nodpi/ic_logo.png` (About), `fastlane/.../icon.png`.
+11. **Havolalar** — `Links.GITHUB` = github.com/furqatovichuz (profil), `Links.REPO` = repo; About'dan Wiki/hamjamiyat qatorlari olib tashlandi. Maket/rang hujjat havolalari upstream HeliBoard'da qoldi (`Links.UPSTREAM_GITHUB`).
+
 ## Tekshirilmagan (keyingi kompda birinchi navbatda)
 - Emulyator/qurilmada: layout (360dp da 3-qator), Shift `ş→Ş`, `I` hech qachon `İ` emas, til sozlamalarida ikkita o'zbek variant, toolbar tugmasi (tanlangan matn / butun maydon / undo), parol maydoni.
 - Lug'atlar ilovada yuklanishi va so'z takliflari (`uz-UZ` va `uz-UZ-newlat` aralashmasligi), spellchecker va til nomi ko'rinishi.

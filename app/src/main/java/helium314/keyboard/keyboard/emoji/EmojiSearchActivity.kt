@@ -3,6 +3,7 @@ package helium314.keyboard.keyboard.emoji
 
 import android.R.string.cancel
 import android.content.Context
+import helium314.keyboard.latin.utils.UiLocale
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
@@ -116,6 +117,10 @@ const val TAG = "emoji-search"
 class EmojiSearchActivity : ComponentActivity() {
     private val colors = Settings.getValues().mColors
     private var imeOpened = false
+
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(UiLocale.wrap(newBase))
+    }
     private var firstSearchDone = false
     private var screenHeight by Delegates.notNull<Int>()
     private lateinit var hintLocales: LocaleList

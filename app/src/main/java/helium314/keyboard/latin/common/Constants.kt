@@ -6,8 +6,9 @@ object Links {
     const val DICTIONARY_DOWNLOAD_SUFFIX = "/raw/branch/main/"
     const val DICTIONARY_NORMAL_SUFFIX = "dictionaries/"
     const val DICTIONARY_EMOJI_CLDR_SUFFIX = "emoji_cldr_signal_dictionaries/"
-    const val GITHUB = "https://github.com/furqatovichuz/uzbek-klaviatura"
-    const val LICENSE = "$GITHUB/blob/uzbek-klaviatura/LICENSE"
+    const val GITHUB = "https://github.com/furqatovichuz"
+    const val REPO = "$GITHUB/uzbek-klaviatura"
+    const val LICENSE = "$REPO/blob/uzbek-klaviatura/LICENSE"
     // wiki, discussions and community pages exist only in the upstream project
     const val UPSTREAM_GITHUB = "https://github.com/HeliBorg/HeliBoard"
     const val WIKI_URL = "$UPSTREAM_GITHUB/wiki"

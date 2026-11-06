@@ -61,6 +61,7 @@ import helium314.keyboard.latin.suggestions.SuggestionStripView;
 import helium314.keyboard.latin.suggestions.SuggestionStripViewAccessor;
 import helium314.keyboard.latin.touchinputconsumer.GestureConsumer;
 import helium314.keyboard.latin.utils.ColorUtilKt;
+import helium314.keyboard.latin.utils.UiLocale;
 import helium314.keyboard.latin.utils.GestureDataGatheringKt;
 import helium314.keyboard.latin.utils.GestureDataGatheringSettings;
 import helium314.keyboard.latin.utils.InlineAutofillUtils;
@@ -486,6 +487,7 @@ public class LatinIME extends InputMethodService implements
 
     @Override
     public void onCreate() {
+        UiLocale.applyTo(this);
         mSettings.startListener();
         KeyboardIconsSet.Companion.getInstance().loadIcons(this);
         mRichImm = RichInputMethodManager.getInstance();
@@ -631,6 +633,7 @@ public class LatinIME extends InputMethodService implements
 
     @Override
     public void onConfigurationChanged(final Configuration conf) {
+        UiLocale.applyTo(this);
         SettingsValues settingsValues = mSettings.getCurrent();
         Log.i(TAG, "onConfigurationChanged");
         SubtypeSettings.INSTANCE.reloadSystemLocales(this);

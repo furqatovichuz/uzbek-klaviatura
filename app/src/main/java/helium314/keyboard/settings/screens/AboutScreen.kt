@@ -56,8 +56,6 @@ fun AboutScreen(
         SettingsWithoutKey.VERSION,
         SettingsWithoutKey.LICENSE,
         SettingsWithoutKey.HIDDEN_FEATURES,
-        SettingsWithoutKey.GITHUB_WIKI,
-        SettingsWithoutKey.COMMUNITY_LINKS,
         SettingsWithoutKey.GITHUB,
         SettingsWithoutKey.SAVE_LOG,
     )
