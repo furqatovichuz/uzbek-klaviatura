@@ -1,3 +1,4 @@
+import java.util.Properties
 import com.android.build.api.variant.ApplicationVariant
 
 plugins {
@@ -22,8 +23,25 @@ android {
         proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
     }
 
+    // Release signing: keys live outside the repository (never commit them).
+    // File: ~/.android-keys/uzbek-klaviatura/keystore.properties, or pass -PkeystoreProps=<path>
+    val keystorePropsFile = file(
+        (project.findProperty("keystoreProps") as String?)
+            ?: "${System.getProperty("user.home")}/.android-keys/uzbek-klaviatura/keystore.properties"
+    )
+    if (keystorePropsFile.exists()) {
+        val props = Properties().also { p -> keystorePropsFile.inputStream().use { p.load(it) } }
+        signingConfigs.create("releaseKey") {
+            storeFile = file(props.getProperty("storeFile"))
+            storePassword = props.getProperty("storePassword")
+            keyAlias = props.getProperty("keyAlias")
+            keyPassword = props.getProperty("keyPassword")
+        }
+    }
+
     buildTypes {
         release {
+            signingConfigs.findByName("releaseKey")?.let { signingConfig = it }
             isMinifyEnabled = true
             isShrinkResources = false
             isDebuggable = false
