@@ -72,6 +72,7 @@
 
     <!-- Language name for the new Uzbek Latin alphabet subtype (uz-UZ-newlat) -->
     <string name="subtype_uz_newlat" translatable="false">Özbek (yangi alifbo)</string>
+    <string name="subtype_uz_oldlat" translatable="false">Özbek (eski alifbo)</string>
 
     <string name="english_ime_name" translatable="false">Yangi özbek klaviaturasi</string>
     <!-- App slogan-->
