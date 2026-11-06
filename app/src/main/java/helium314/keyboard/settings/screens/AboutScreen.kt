@@ -74,7 +74,7 @@ fun createAboutSettings(context: Context) = listOf(
             name = it.title,
             description = it.description,
             onClick = { },
-            icon = R.mipmap.ic_launcher_round
+            icon = R.drawable.ic_logo
         )
     },
     Setting(context, SettingsWithoutKey.VERSION, R.string.version) {
