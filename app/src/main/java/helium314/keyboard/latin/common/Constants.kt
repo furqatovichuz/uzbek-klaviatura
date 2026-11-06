@@ -8,6 +8,9 @@ object Links {
     const val DICTIONARY_EMOJI_CLDR_SUFFIX = "emoji_cldr_signal_dictionaries/"
     const val GITHUB = "https://github.com/furqatovichuz"
     const val REPO = "$GITHUB/uzbek-klaviatura"
+    const val TELEGRAM = "https://t.me/furqatovichuz"
+    const val SITE = "https://furqatovich.uz"
+    const val WINDOWS_APP = "$GITHUB/yangi-alifbo-windows"
     const val LICENSE = "$REPO/blob/uzbek-klaviatura/LICENSE"
     // wiki, discussions and community pages exist only in the upstream project
     const val UPSTREAM_GITHUB = "https://github.com/HeliBorg/HeliBoard"

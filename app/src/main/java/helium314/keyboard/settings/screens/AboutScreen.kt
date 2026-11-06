@@ -57,6 +57,9 @@ fun AboutScreen(
         SettingsWithoutKey.LICENSE,
         SettingsWithoutKey.HIDDEN_FEATURES,
         SettingsWithoutKey.GITHUB,
+        SettingsWithoutKey.AUTHOR_TELEGRAM,
+        SettingsWithoutKey.AUTHOR_SITE,
+        SettingsWithoutKey.WINDOWS_APP,
         SettingsWithoutKey.SAVE_LOG,
     )
     SearchSettingsScreen(
@@ -170,6 +173,33 @@ fun createAboutSettings(context: Context) = listOf(
                 intent.action = Intent.ACTION_VIEW
                 ctx.startActivity(intent)
             },
+            icon = R.drawable.ic_settings_about_github
+        )
+    },
+    Setting(context, SettingsWithoutKey.AUTHOR_TELEGRAM, R.string.uz_about_author, R.string.uz_about_author_telegram) {
+        val ctx = LocalContext.current
+        Preference(
+            name = it.title,
+            description = it.description,
+            onClick = { ctx.startActivity(Intent(Intent.ACTION_VIEW, Links.TELEGRAM.toUri())) },
+            icon = R.drawable.ic_settings_about_community
+        )
+    },
+    Setting(context, SettingsWithoutKey.AUTHOR_SITE, R.string.uz_about_site, R.string.uz_about_site_description) {
+        val ctx = LocalContext.current
+        Preference(
+            name = it.title,
+            description = it.description,
+            onClick = { ctx.startActivity(Intent(Intent.ACTION_VIEW, Links.SITE.toUri())) },
+            icon = R.drawable.ic_settings_about_wiki
+        )
+    },
+    Setting(context, SettingsWithoutKey.WINDOWS_APP, R.string.uz_about_windows, R.string.uz_about_windows_description) {
+        val ctx = LocalContext.current
+        Preference(
+            name = it.title,
+            description = it.description,
+            onClick = { ctx.startActivity(Intent(Intent.ACTION_VIEW, Links.WINDOWS_APP.toUri())) },
             icon = R.drawable.ic_settings_about_github
         )
     },

@@ -315,6 +315,12 @@
     <string name="uz_setup_step3_title">Tanlandi, rahmat!</string>
     <string name="uz_setup_step3_hint">Endi istalgan ilovada yozişingiz mumkin.</string>
     <string name="uz_setup_close">Yopiş</string>
+    <string name="uz_about_author">Yaratuvçi: Furqatovich</string>
+    <string name="uz_about_author_telegram">Telegram: t.me/furqatovichuz</string>
+    <string name="uz_about_site">Sayt</string>
+    <string name="uz_about_site_description">furqatovich.uz</string>
+    <string name="uz_about_windows">Windows uçun dastur</string>
+    <string name="uz_about_windows_description">Kompyuterda ham yangi alifbo: sh→ş, ch→ç, o\'→ö, g\'→ğ</string>
     <string name="setup_step1_title">%s ni yoqing</string>
     <string name="setup_step1_instruction">Iltimos, “Til va kiritiş” sozlamalarida “%s” ni belgilang. Bu uning qurilmangizda işlaşiga ruxsat beradi.</string>
     <string name="setup_step1_action">Sozlamalarda yoqiş</string>

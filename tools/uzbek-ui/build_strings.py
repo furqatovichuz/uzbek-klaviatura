@@ -37,7 +37,7 @@ def convert(text, name):
         if not part:
             continue
         if part.startswith("⟨"):
-            out.append(esc(part[1:-1]))
+            out.append(re.sub(r"(?<!\\)'", r"\\'", esc(part[1:-1])))
         elif TOKEN.fullmatch(part):
             out.append(part)  # placeholder / xliff / escape: o'zgarishsiz
         else:

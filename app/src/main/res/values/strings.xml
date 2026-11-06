@@ -632,6 +632,12 @@ language, hence "No language". -->
     <string name="uz_setup_step3_title">Selected, thank you!</string>
     <string name="uz_setup_step3_hint">Now you can type in any app.</string>
     <string name="uz_setup_close">Close</string>
+    <string name="uz_about_author">Author: Furqatovich</string>
+    <string name="uz_about_author_telegram">Telegram: t.me/furqatovichuz</string>
+    <string name="uz_about_site">Website</string>
+    <string name="uz_about_site_description">furqatovich.uz</string>
+    <string name="uz_about_windows">App for Windows</string>
+    <string name="uz_about_windows_description">sh, ch, o\', g\' are turned into ş, ç, ö, ğ automatically</string>
     <string name="setup_step1_title">"Enable %s"</string>
     <!-- Detailed instruction of the 1st step in the setup wizard. %s is the application name. -->
     <string name="setup_step1_instruction">"Please check \"%s\" in your Languages &amp; input settings. This will authorize it to run on your device."</string>
