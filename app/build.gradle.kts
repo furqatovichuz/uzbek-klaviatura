@@ -12,9 +12,9 @@ android {
 
     defaultConfig {
         applicationId = "uz.klavish.keyboard"
-        minSdk = 21
+        minSdk = 24
         targetSdk = 37
-        versionCode = 10000
+        versionCode = 10001
         versionName = "1.0.0"
         ndk {
             abiFilters.clear()
