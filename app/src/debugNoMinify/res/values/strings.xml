@@ -3,7 +3,7 @@
     SPDX-License-Identifier: GPL-3.0-only
 -->
 <resources>
-    <string name="english_ime_name" translatable="false">Yangi özbek klaviaturasi (debug)</string>
-    <string name="spell_checker_service_name" translatable="false">Yangi özbek klaviaturasi (debug) imlo tekshiruvi</string>
-    <string name="ime_settings" translatable="false">Yangi özbek klaviaturasi (debug) sozlamalari</string>
+    <string name="english_ime_name" translatable="false">Yangi özbek klaviaturasi</string>
+    <string name="spell_checker_service_name" translatable="false">Yangi özbek klaviaturasi imlo tekshiruvi</string>
+    <string name="ime_settings" translatable="false">Yangi özbek klaviaturasi sozlamalari</string>
 </resources>

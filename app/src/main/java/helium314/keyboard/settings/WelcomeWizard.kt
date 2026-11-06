@@ -29,8 +29,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -77,7 +75,6 @@ fun WelcomeWizard(
     var enabled by remember { mutableStateOf(UncachedInputMethodManagerUtils.isThisImeEnabled(ctx, imm)) }
     var current by remember { mutableStateOf(UncachedInputMethodManagerUtils.isThisImeCurrent(ctx, imm)) }
     var autoPickerShown by rememberSaveable { mutableStateOf(false) }
-    var testText by rememberSaveable { mutableStateOf("") }
 
     // detect progress automatically (also when coming back from system settings or the picker)
     LaunchedEffect(Unit) {
@@ -154,18 +151,8 @@ fun WelcomeWizard(
                 title = stringResource(R.string.uz_setup_step3_title),
                 hint = stringResource(R.string.uz_setup_step3_hint),
             ) {
-                OutlinedTextField(
-                    value = testText,
-                    onValueChange = { testText = it },
-                    label = { Text(stringResource(R.string.uz_setup_test_label)) },
-                    modifier = Modifier.fillMaxWidth(),
-                )
-                Spacer(Modifier.height(8.dp))
-                Button(onClick = close, Modifier.fillMaxWidth().height(52.dp)) {
-                    Text(stringResource(R.string.uz_setup_continue), style = MaterialTheme.typography.titleMedium)
-                }
-                OutlinedButton(onClick = finish, Modifier.fillMaxWidth()) {
-                    Text(stringResource(R.string.uz_setup_close))
+                Button(onClick = finish, Modifier.fillMaxWidth().height(52.dp)) {
+                    Text(stringResource(R.string.uz_setup_close), style = MaterialTheme.typography.titleMedium)
                 }
             }
         }

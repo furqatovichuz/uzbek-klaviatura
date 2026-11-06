@@ -312,10 +312,8 @@
     <string name="uz_setup_step2_title">Klaviaturani tanlaş</string>
     <string name="uz_setup_step2_hint">Çiqqan oynada “%s” ni tanlang.</string>
     <string name="uz_setup_step2_button">Klaviaturani tanlaş</string>
-    <string name="uz_setup_step3_title">Tayyor!</string>
-    <string name="uz_setup_step3_hint">Pastdagi maydonga bosib, yozib köring.</string>
-    <string name="uz_setup_test_label">Şu yerga yozing</string>
-    <string name="uz_setup_continue">Sozlamalarga ötiş</string>
+    <string name="uz_setup_step3_title">Tanlandi, rahmat!</string>
+    <string name="uz_setup_step3_hint">Endi istalgan ilovada yozişingiz mumkin.</string>
     <string name="uz_setup_close">Yopiş</string>
     <string name="setup_step1_title">%s ni yoqing</string>
     <string name="setup_step1_instruction">Iltimos, “Til va kiritiş” sozlamalarida “%s” ni belgilang. Bu uning qurilmangizda işlaşiga ruxsat beradi.</string>
