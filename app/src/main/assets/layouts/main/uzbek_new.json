@@ -1,5 +1,3 @@
-// New Uzbek Latin alphabet (2026): ö ğ ş ç are single letters, ʼ (U+02BC) is the tutuq sign.
-// Shift gives Ö Ğ Ş Ç via the default auto_text_key case handling.
 [
   [
     { "label": "q" },

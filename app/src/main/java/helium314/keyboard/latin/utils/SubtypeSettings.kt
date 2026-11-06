@@ -218,6 +218,13 @@ object SubtypeSettings {
     @Suppress("SameReturnValue")
     private fun getDefaultEnabledSubtypes(): List<InputMethodSubtype> {
         if (systemSubtypes.isNotEmpty()) return systemSubtypes
+        // Yangi o'zbek alifbosi - ilovaning asosiy xususiyati: tizim tilidan qat'i nazar standart shu bo'ladi
+        val newAlphabet = resourceSubtypesByLocale.entries
+            .firstOrNull { it.key.toLanguageTag() == DEFAULT_LOCALE_TAG }?.value?.firstOrNull()
+        if (newAlphabet != null) {
+            systemSubtypes.add(newAlphabet)
+            return systemSubtypes
+        }
         val subtypes = systemLocales.mapNotNull { locale ->
             val subtypesOfLocale = resourceSubtypesByLocale[locale]
             // get best match
@@ -306,5 +313,6 @@ object SubtypeSettings {
     private val additionalSubtypes = mutableListOf<InputMethodSubtype>()
     private val systemLocales = mutableListOf<Locale>()
     private val systemSubtypes = mutableListOf<InputMethodSubtype>()
+    private const val DEFAULT_LOCALE_TAG = "uz-UZ-newlat"
     private val TAG = SubtypeSettings::class.simpleName
 }
