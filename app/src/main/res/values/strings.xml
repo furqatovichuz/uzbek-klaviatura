@@ -621,6 +621,19 @@ language, hence "No language". -->
     <!-- Title of the setup wizard. %s is the application name. -->
     <string name="setup_steps_title">"Setting up %s"</string>
     <!-- Title of the 1st step in the setup wizard. %s is the application name. -->
+    <string name="uz_setup_headline">Let\'s enable the keyboard</string>
+    <string name="uz_setup_subtitle">Just two taps</string>
+    <string name="uz_setup_step1_title">Enable the keyboard</string>
+    <string name="uz_setup_step1_hint">Find \"%s\" in the list and switch it on.</string>
+    <string name="uz_setup_step1_button">Enable the keyboard</string>
+    <string name="uz_setup_step2_title">Choose the keyboard</string>
+    <string name="uz_setup_step2_hint">In the window that opens, choose \"%s\".</string>
+    <string name="uz_setup_step2_button">Choose the keyboard</string>
+    <string name="uz_setup_step3_title">Done!</string>
+    <string name="uz_setup_step3_hint">Tap the field below and try typing.</string>
+    <string name="uz_setup_test_label">Type here</string>
+    <string name="uz_setup_continue">Continue to settings</string>
+    <string name="uz_setup_close">Close</string>
     <string name="setup_step1_title">"Enable %s"</string>
     <!-- Detailed instruction of the 1st step in the setup wizard. %s is the application name. -->
     <string name="setup_step1_instruction">"Please check \"%s\" in your Languages &amp; input settings. This will authorize it to run on your device."</string>
